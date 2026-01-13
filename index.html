@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy Birthday Van 10 ❤️</title>
+  <style>
+    body { margin:0; font-family:Arial,sans-serif; background:black; color:white; text-align:center; overflow:hidden;}
+    .slide { display:none; height:100vh; padding:40px 20px; }
+    .active { display:block; }
+    button { padding:12px 30px; font-size:18px; margin:12px; border:none; border-radius:30px; cursor:pointer; background:pink; }
+    .light { background:#ffe6f0; color:black; }
+    .heart, .balloon { position:fixed; bottom:-50px; font-size:26px; animation:floatUp 6s linear infinite; }
+    .heart { color:red; }
+    .balloon { color:#ff4da6; }
+    @keyframes floatUp { from { transform:translateY(0); opacity:1; } to { transform:translateY(-120vh); opacity:0; } }
+    img { max-width:80%; margin-top:20px; border-radius:20px; display:none; }
+  </style>
+</head>
+<body>
+
+<!-- Slides -->
+
+<div class="slide active">
+  <h1>It’s our special day ❤️</h1>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="slide">
+  <h2>There should be something special</h2>
+  <h3>For someone special</h3>
+  <h4>On her special day 💖</h4>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="slide">
+  <h2>Do you want to see it? 😏</h2>
+  <button onclick="next()">Yes</button>
+  <button onclick="next()">Yessssssssss</button>
+</div>
+
+<div class="slide">
+  <h2>Have a look on it, jaan 💕</h2>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="slide">
+  <h2>Lights off...</h2>
+  <button onclick="lightsOn()">Lights On ✨</button>
+</div>
+
+<div class="slide light">
+  <h2>Play Music 🎵</h2>
+  <button onclick="playMusic()">Play</button>
+</div>
+
+<!-- Decorate Slide -->
+<div class="slide light">
+  <h2>Decorate 🎀</h2>
+  <button onclick="next()">Decorate Now</button>
+</div>
+
+<!-- Cut Cake Slide -->
+<div class="slide light">
+  <h2>Let’s cut the cake 🎂</h2>
+  <img src="cake.jpg" id="cakeImage" style="display:block;">
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="slide light">
+  <h2>Fly Balloons 🎈</h2>
+  <button onclick="flyBalloons()">Fly</button>
+</div>
+
+<div class="slide light">
+  <h2>Personal Message 💖</h2>
+  <p style="font-size:18px; line-height:1.6;">
+    Dear Van 10,<br>
+    Happy birthday baby 🎂 I love you so much and wish all success, happiness and love for you. May God bless you with prosperity, health and endless smiles. Stay with me forever ❤️
+  </p>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="slide light">
+  <h1 style="font-size:52px;">I LOVE YOU ❤️</h1>
+  <h2>Van 10</h2>
+  <p>Forever & Always ♾️</p>
+</div>
+
+<!-- Music -->
+<audio id="music">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6bde6c4b1f.mp3">
+</audio>
+
+<script>
+let slides = document.querySelectorAll('.slide');
+let current = 0;
+
+function next() {
+  slides[current].classList.remove('active');
+  current++;
+  slides[current].classList.add('active');
+}
+
+function lightsOn() {
+  next();
+  setInterval(()=>createFloat("❤️","heart"),300);
+}
+
+function flyBalloons() {
+  setInterval(()=>createFloat("🎈","balloon"),400);
+  setTimeout(next,1500);
+}
+
+function createFloat(symbol, cls) {
+  let el = document.createElement('div');
+  el.innerHTML = symbol;
+  el.className = cls;
+  el.style.left = Math.random()*100 + "vw";
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),6000);
+}
+
+function playMusic() {
+  document.getElementById("music").play();
+  next();
+}
+</script>
+
+</body>
+</html>
